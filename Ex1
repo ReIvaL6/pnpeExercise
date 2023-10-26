@@ -1,0 +1,54 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+    
+    static int[] arr = new int[5];
+    
+    static int SumOfArray()
+    {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++)
+            sum += arr[i];
+
+        return sum;
+    }
+
+    static int SumOfOdd()
+    {
+        int OddSum = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] % 2 != 0)
+            {
+                OddSum = OddSum + arr[i];
+            }
+        }
+        return OddSum;
+    }
+
+    static int SumOfEven()
+    {
+        int EvenSum = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] % 2 == 0)
+            {
+                EvenSum = EvenSum + arr[i];
+            }
+        }
+        return EvenSum;
+    }
+
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("Enter element [" +(i + 1)+"]: ");
+            arr[i] = kb.nextInt();
+        }
+        System.out.println("Sum of array is " + SumOfArray());
+        System.out.println("Sum of even numbers in array is " + SumOfEven());
+        System.out.println("Sum of odd numbers in array is " + SumOfOdd());
+    }
+}
