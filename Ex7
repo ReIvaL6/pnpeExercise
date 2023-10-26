@@ -1,0 +1,126 @@
+import java.util.Scanner;
+
+public class Main {
+    static void reverseArray(int arr[])
+    {
+        System.out.print("Reverse array is: ");
+        for(int i = arr.length-1;i>=0;i--)
+            System.out.print(arr[i] + "  ");
+        System.out.println();
+    }
+    static int SumOfArray(int arr[])
+    {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++)
+            sum += arr[i];
+
+        return sum;
+    }
+
+    static int SumOfOdd(int arr[])
+    {
+        int OddSum = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] % 2 != 0)
+            {
+                OddSum = OddSum + arr[i];
+            }
+        }
+        return OddSum;
+    }
+
+    static int SumOfEven(int arr[])
+    {
+        int EvenSum = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] % 2 == 0)
+            {
+                EvenSum = EvenSum + arr[i];
+            }
+        }
+        return EvenSum;
+    }
+
+    static int max(int arr[]) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    static int min(int arr[])
+    {
+        int min = arr[0];
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (arr[i] < min)
+            {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= num / 2; i++) {
+            if ((num % i) == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static int SumDiagonals(int rows, int columns, int [][] matrix)
+    {
+        int sumOfDiagonal1=0;
+        for (int i = 0, j =0; i< rows && j < columns; i++, j++)
+        {
+            sumOfDiagonal1= sumOfDiagonal1 + matrix[i][j];
+        }
+
+        int sumOfDiagonal2=0;
+        for (int i=0,j=columns-1 ; i<rows && j>=0 ; i++, j--)
+        {
+            sumOfDiagonal2= sumOfDiagonal2 + matrix[i][j];
+        }
+
+        System.out.println("\nMatrix is : ");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int sumOfDiagonals = sumOfDiagonal1+ sumOfDiagonal2;
+
+        return sumOfDiagonals;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[5];
+        Scanner kb = new Scanner(System.in);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("Enter element [" + (i + 1) + "]: ");
+            arr[i] = kb.nextInt();
+        }
+        System.out.print("Enter number for prime check: ");
+        int num = kb.nextInt();
+
+        System.out.println("Sum of array is " + SumOfArray(arr));
+        System.out.println("Sum of even numbers in array is " + SumOfEven(arr));
+        System.out.println("Sum of odd numbers in array is " + SumOfOdd(arr));
+        reverseArray(arr);
+        System.out.println("Max " + max(arr));
+        System.out.println("Min " + min(arr));
+        System.out.println(isPrime(num));
+    }
+}
